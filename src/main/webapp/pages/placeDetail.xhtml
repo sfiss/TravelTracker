@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:comp="http://java.sun.com/jsf/composite/components"
+	xmlns:tag="http://tt.sfiss.de/taglib" template="/layout/base.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<!-- Toolbar Menu -->
+			<rich:toolbar>
+				<rich:toolbarGroup>
+					<h:commandLink action="#{placeDetailBean.back}"
+						styleClass="iconButtonSmall"
+						style="background-image: url('../resources/img/16/back.png');"
+						value="#{msg['button.back']}">
+					</h:commandLink>
+				</rich:toolbarGroup>
+			</rich:toolbar>
+		</h:form>
+
+		<rich:panel>
+			<comp:place place="#{placeDetailBean.place}" editable="false">
+				<tag:output id="placeId" label="ID" bean="#{cc.attrs.place}"
+					prop="id" />
+				<tag:output id="placeName" label="Name" bean="#{cc.attrs.place}"
+					prop="name" />
+			</comp:place>
+		</rich:panel>
+
+		<rich:panel>
+			<h:outputText value="#{placeDetailBean.wikiHtml}" escape="false" />
+		</rich:panel>
+
+		<rich:panel>
+			<h:outputText value="#{placeDetailBean.wikiHtml}" escape="false" />
+		</rich:panel>
+	</ui:define>
+</ui:composition>

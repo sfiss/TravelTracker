@@ -1,0 +1,11 @@
+table.rf-tb {
+	border: none;
+	border-bottom: 1px solid black;
+	background: none;
+	background-color: white;
+	margin-bottom: 10px;
+}
+
+div.rf-pp-cntr {
+	width: 800px;
+}

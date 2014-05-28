@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:comp="http://java.sun.com/jsf/composite/components"
+	xmlns:tag="http://tt.sfiss.de/taglib" template="/layout/base.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<!-- Toolbar Menu -->
+			<rich:toolbar>
+				<rich:toolbarGroup>
+					<a4j:commandLink action="#{placesBean.create}"
+						styleClass="iconButtonSmall"
+						style="background-image: url('../resources/img/16/add.png');"
+						value="#{msg['button.create']} #{msg['model.place']}"
+						render="popupHeader popupContent"
+						oncomplete="#{rich:component('popup')}.show();">
+					</a4j:commandLink>
+				</rich:toolbarGroup>
+			</rich:toolbar>
+		</h:form>
+
+		<!-- Map -->
+		<div id="map_canvas" style="width: 100%; height: 450px"></div>
+
+		<h:form id="dataGridForm">
+			<!-- Data Grid -->
+			<rich:dataGrid value="#{placesBean.dataModel}" var="place"
+				columns="3" id="dataGrid" styleClass="placesGrid">
+				<rich:panel styleClass="placesGridTile">
+					<f:facet name="header">
+						<h:panelGrid columns="4">
+							<a4j:commandLink action="#{placesBean.edit}"
+								styleClass="iconButtonSmall"
+								style="background-image: url('../resources/img/16/edit.png');"
+								value="" render="popupHeader popupContent"
+								oncomplete="#{rich:component('popup')}.show()" />
+
+							<a4j:commandLink action="#{placesBean.edit}"
+								styleClass="iconButtonSmall"
+								style="background-image: url('../resources/img/16/delete.png');"
+								value="" render="popupHeader popupContent"
+								oncomplete="#{rich:component('popup')}.show()">
+							</a4j:commandLink>
+
+							<h:commandLink action="#{placesBean.detail}"
+								styleClass="iconButtonSmall"
+								style="background-image: url('../resources/img/16/detail.png');"
+								value="">
+							</h:commandLink>
+
+							<h:outputText value="#{place.shortName}" />
+						</h:panelGrid>
+					</f:facet>
+
+					<comp:place place="#{place}" editable="false">
+						<tag:output id="placeId" label="ID" bean="#{cc.attrs.place}"
+							prop="id" />
+					</comp:place>
+
+				</rich:panel>
+			</rich:dataGrid>
+		</h:form>
+
+		<rich:popupPanel id="popup" modal="true" autosized="true"
+			resizeable="false"
+			onshow="addAutocomplete('placeEdit-placeLocation');">
+			<f:facet name="header">
+				<h:outputText value="#{placesBean.popupHeader}" id="popupHeader" />
+			</f:facet>
+
+			<f:facet name="controls">
+				<h:outputLink value="#"
+					onclick="#{rich:component('popup')}.hide(); return false;">
+	                X
+	            </h:outputLink>
+			</f:facet>
+
+			<h:form prependId="false">
+				<rich:panel id="popupContent">
+					<ui:include src="/pages/placeEdit.xhtml" />
+				</rich:panel>
+			</h:form>
+		</rich:popupPanel>
+
+		<div id="map_script">
+			<script type="text/javascript">
+				loadMap();
+			</script>
+		</div>
+
+	</ui:define>
+</ui:composition>

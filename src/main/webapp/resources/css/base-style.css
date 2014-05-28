@@ -1,0 +1,54 @@
+html {
+	font-family: Verdana, serif;
+}
+
+div#contentWrapper {
+	text-align: center;
+	width: 100%;
+}
+
+div#content {
+	text-align: left;
+	margin: 0 auto;
+	width: 900px;
+}
+
+.iconButtonSmall {
+	display: inline-block;
+	border: none;
+	color: black;
+	text-decoration: none;
+	background: none;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	padding-left: 20px;
+	height: 16px;
+	line-height: 16px;
+}
+
+.iconButtonBig {
+	display: inline-block;
+	border: none;
+	color: black;
+	text-decoration: none;
+	background-color: none;
+	background-repeat: no-repeat;
+	background-size: 32px 32px;
+	padding-left: 40px;
+	height: 32px;
+	line-height: 32px;
+}
+
+.placesGrid {
+	border: none !important;
+	padding: 0px;
+}
+
+.placesGrid .rf-dg-c {
+	border: none !important;
+	padding: 5px;
+}
+
+.placesGridTile {
+	width: 290px;
+}

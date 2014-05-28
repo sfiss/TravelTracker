@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Travel Tracker</title>
+	<h:outputStylesheet name="base-style.css" library="css" />
+	<h:outputStylesheet name="rich-style.css" library="css" />
+
+	<h:outputScript name="maps.js" library="js"></h:outputScript>
+</h:head>
+<h:body>
+	<div id="header"></div>
+
+	<div id="contentWrapper">
+		<div id="content">
+			<ui:insert name="content" />
+		</div>
+	</div>
+
+	<div id="footer"></div>
+
+	<div id="scripts">
+		<script type="text/javascript">
+			loadMap();
+		</script>
+	</div>
+
+
+</h:body>
+</html>

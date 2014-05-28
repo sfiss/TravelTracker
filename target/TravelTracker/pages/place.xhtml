@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<div>
+		Place: #{placesBean.place}
+		<h:panelGrid columns="2">
+			<h:outputText value="ID" />
+			<h:inputText value="#{placesBean.place.id}" readonly="true"
+				disabled="true" />
+
+			<h:outputText value="Name" />
+			<h:inputText value="#{placesBean.place.name}" />
+		</h:panelGrid>
+
+		<a4j:commandLink
+			onclick="#{rich:component('popup')}.hide(); return false;"
+			styleClass="iconButtonBig"
+			style="background-image: url('../resources/img/32/cancel.png');"
+			value="">
+		</a4j:commandLink>
+
+		<a4j:commandLink onclick="#{rich:component('popup')}.hide()"
+			action="#{placesBean.save}" styleClass="iconButtonBig"
+			style="background-image: url('../resources/img/32/ok.png');" value=""
+			render="dataGrid">
+		</a4j:commandLink>
+	</div>
+</ui:composition>

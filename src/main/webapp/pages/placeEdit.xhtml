@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:comp="http://java.sun.com/jsf/composite/components"
+	xmlns:tag="http://tt.sfiss.de/taglib">
+	<div>
+		<!-- 		<h:panelGrid columns="3"> -->
+		<!-- 			<tag:input id="placeId" label="ID *" prop="id" -->
+		<!-- 				bean="#{placesBean.place}" disabled="true" /> -->
+
+		<!-- 			<tag:input id="placeName" label="Name" prop="name" -->
+		<!-- 				bean="#{placesBean.place}" /> -->
+
+		<!-- 			<tag:input id="placeLocation" label="Location *" prop="location" -->
+		<!-- 				bean="#{placesBean.place}" required="true" /> -->
+
+		<!-- 		</h:panelGrid> -->
+
+		<comp:place id="placeEdit" place="#{placesBean.place}" editable="true">
+			<tag:input id="placeId" label="ID *" prop="id"
+				bean="#{placesBean.place}" disabled="true" />
+
+			<tag:input id="placeName" label="Name" prop="name"
+				bean="#{placesBean.place}" />
+		</comp:place>
+
+		<h:commandLink action="#{placesBean.save}"
+			styleClass="iconButtonSmall"
+			style="background-image: url('../resources/img/16/ok.png');" value="">
+		</h:commandLink>
+
+		<a4j:commandLink
+			onclick="#{rich:component('popup')}.hide(); return false;"
+			styleClass="iconButtonSmall"
+			style="background-image: url('../resources/img/16/cancel.png');"
+			value="">
+		</a4j:commandLink>
+	</div>
+</ui:composition>
